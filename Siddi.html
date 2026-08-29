@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Siddis — African Roots in India</title>
+<meta name="description" content="A journey across the Indian Ocean: the story of the Siddis, India's African-descended community.">
+<style>
+/* ═══════════════ THEME · INDIGO NIGHT + GOLD ═══════════════ */
+:root{
+  --night:#070d20;
+  --deep:#0d1533;
+  --card:#141e42;
+  --card2:#1a2650;
+  --line:rgba(240,192,90,.18);
+  --line2:rgba(255,255,255,.08);
+  --ink:#eef2ff;
+  --muted:#a3b3d8;
+  --dim:#6f7fa8;
+  --gold:#f0c05a;
+  --coral:#ff8a5c;
+  --teal:#4fd1c5;
+  --rose:#f38ba8;
+  --violet:#b49cf0;
+  --sky:#7fb3ee;
+  --a:var(--gold);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  color:var(--ink);line-height:1.6;
+  background:
+    radial-gradient(900px 600px at 82% 4%,rgba(240,192,90,.09),transparent 60%),
+    radial-gradient(1000px 700px at 8% 26%,rgba(127,179,238,.10),transparent 62%),
+    radial-gradient(800px 600px at 60% 88%,rgba(255,138,92,.07),transparent 60%),
+    linear-gradient(180deg,#070d20 0%,#0b1330 45%,#070d20 100%);
+  background-attachment:fixed;
+}
+/* starfield */
+body:before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%,rgba(255,255,255,.55),transparent),
+    radial-gradient(1.2px 1.2px at 71% 9%,rgba(240,192,90,.5),transparent),
+    radial-gradient(1.6px 1.6px at 34% 62%,rgba(255,255,255,.35),transparent),
+    radial-gradient(1.2px 1.2px at 88% 46%,rgba(127,179,238,.45),transparent),
+    radial-gradient(1.3px 1.3px at 55% 84%,rgba(255,255,255,.3),transparent),
+    radial-gradient(1.2px 1.2px at 22% 91%,rgba(240,192,90,.35),transparent);
+}
+
+/* ═══════════════ CUSTOM SCROLLBAR ═══════════════ */
+html{scrollbar-color:var(--gold) var(--night);scrollbar-width:thin}
+::-webkit-scrollbar{width:13px}
+::-webkit-scrollbar-track{background:var(--night);border-left:1px solid var(--line2)}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold) 0%,var(--coral) 55%,var(--rose) 100%);
+  border-radius:20px;border:3px solid var(--night);
+}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ffd379,#ff9f78)}
+::selection{background:var(--gold);color:#0a0f22}
+
+/* ═══════════════ TOP BAR ═══════════════ */
+#top{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(7,13,32,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line2);
+}
+.tin{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:13px 26px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit}
+.logo svg{width:26px;height:26px}
+.logo b{font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.logo span{font-size:11px;color:var(--dim);letter-spacing:.05em;display:block;margin-top:1px;text-transform:none;font-weight:400}
+.grow{flex:1}
+.tbtn{
+  background:transparent;border:1px solid var(--line);color:var(--muted);
+  padding:7px 15px;border-radius:22px;cursor:pointer;font:inherit;font-size:12.5px;transition:.2s;white-space:nowrap;
+}
+.tbtn:hover{border-color:var(--gold);color:var(--gold);background:rgba(240,192,90,.08)}
+.tbtn.on{background:var(--gold);color:#0a0f22;border-color:var(--gold);font-weight:700}
+#saved{
+  font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);font-weight:700;
+  opacity:0;transition:opacity .3s;white-space:nowrap;
+}
+#saved.show{opacity:1}
+#saved.warn{color:var(--coral)}
+#saved.ok{color:var(--teal)}
+#syncbadge{
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;
+  padding:2px 8px;border-radius:12px;vertical-align:middle;margin-left:5px;
+  background:rgba(255,255,255,.08);color:var(--dim);
+}
+#syncbadge.on{background:var(--teal);color:#0a1f1c}
+#syncrow.live{background:rgba(79,209,197,.06);border-radius:12px;padding:17px 14px;margin:0 -14px}
+#prog{height:3px;background:rgba(255,255,255,.06)}
+
+/* ── share sheet ── */
+#sheet{position:fixed;inset:0;z-index:90;background:rgba(4,8,20,.86);backdrop-filter:blur(7px);display:none;padding:80px 20px 40px;overflow-y:auto}
+#sheet.open{display:block}
+.sbox{max-width:620px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+.srow{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid var(--line2);flex-wrap:wrap}
+.srow b{display:block;font-size:14.5px;margin-bottom:4px}
+.srow small{color:var(--dim);font-size:12.5px;line-height:1.5;display:block;max-width:44ch}
+.srow code{background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px;font-size:11.5px}
+#linkout{margin-bottom:4px}
+#linkout textarea{
+  width:100%;height:76px;background:var(--night);color:var(--muted);border:1px solid var(--line2);
+  border-radius:10px;padding:11px;font-size:11px;font-family:ui-monospace,monospace;resize:vertical;word-break:break-all;
+}
+#linkout p{font-size:11.5px;color:var(--dim);margin-top:7px}
+#toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,24px);z-index:100;
+  background:var(--gold);color:#0a0f22;font-weight:700;font-size:13.5px;padding:11px 22px;border-radius:26px;
+  opacity:0;pointer-events:none;transition:.3s;box-shadow:0 10px 34px rgba(0,0,0,.45);
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ── thank-you screen ── */
+#thanks{
+  position:fixed;inset:0;z-index:120;display:none;overflow:hidden;
+  background:
+    radial-gradient(900px 620px at 50% 38%,rgba(240,192,90,.20),transparent 68%),
+    radial-gradient(700px 500px at 18% 82%,rgba(255,138,92,.16),transparent 66%),
+    radial-gradient(700px 500px at 84% 20%,rgba(127,179,238,.16),transparent 66%),
+    #050a18;
+}
+#thanks.open{display:block;animation:tfade .55s ease both}
+@keyframes tfade{from{opacity:0}to{opacity:1}}
+#tclose{position:absolute;top:22px;right:24px;z-index:3}
+.tstars{
+  position:absolute;inset:0;opacity:.6;
+  background-image:
+    radial-gradient(1.6px 1.6px at 14% 22%,rgba(255,255,255,.8),transparent),
+    radial-gradient(1.4px 1.4px at 68% 12%,rgba(240,192,90,.7),transparent),
+    radial-gradient(1.8px 1.8px at 38% 68%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.5px 1.5px at 86% 52%,rgba(127,179,238,.6),transparent),
+    radial-gradient(1.6px 1.6px at 52% 88%,rgba(255,255,255,.45),transparent),
+    radial-gradient(1.4px 1.4px at 24% 46%,rgba(243,139,168,.6),transparent);
+  animation:tw 4s ease-in-out infinite alternate;
+}
+@keyframes tw{from{opacity:.35}to{opacity:.8}}
+/* rolling credits */
+.roll{position:absolute;inset:0;overflow:hidden;z-index:2;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 97%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 97%);}
+.rollin{
+  position:absolute;left:0;right:0;top:0;padding:0 22px;text-align:center;
+  transform:translateY(100vh);animation:roll var(--roll,45s) linear forwards;
+}
+.rollin.paused{animation-play-state:paused}
+@keyframes roll{from{transform:translateY(100vh)}to{transform:translateY(-100%)}}
+.cr-title{font-size:clamp(22px,4.4vw,44px);font-weight:800;letter-spacing:.02em;line-height:1.15;
+  background:linear-gradient(94deg,var(--gold),var(--coral));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cr-sub{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.cr-h{font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:800;margin:52px 0 20px}
+.cr-row{display:flex;justify-content:center;gap:18px;align-items:baseline;margin:9px 0;font-size:clamp(14px,2vw,17px)}
+.cr-row .r{flex:1;text-align:right;color:var(--dim);max-width:270px;font-size:.86em;letter-spacing:.04em;text-transform:uppercase}
+.cr-row .p{flex:1;text-align:left;color:var(--ink);max-width:270px;font-weight:600}
+.cr-one{margin:9px 0;font-size:clamp(14px,2vw,17px);color:var(--ink)}
+.cr-note{font-size:13px;color:var(--dim);margin:8px 0;line-height:1.7}
+.cr-end{
+  margin:80px 0 60vh;font-size:clamp(44px,11vw,120px);font-weight:800;letter-spacing:-.02em;line-height:.95;
+  background:linear-gradient(94deg,var(--gold) 5%,var(--coral) 45%,var(--rose) 80%,var(--violet) 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shine 5s linear infinite;
+}
+@keyframes shine{to{background-position:220% center}}
+#player{position:absolute;bottom:74px;right:22px;width:230px;z-index:3}
+#player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:11px;box-shadow:0 12px 34px rgba(0,0,0,.55)}
+.tbar{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;gap:11px;align-items:center;
+  justify-content:center;flex-wrap:wrap;padding:15px 22px;background:linear-gradient(180deg,transparent,rgba(5,10,24,.92) 45%)}
+.tnote{font-size:11.5px;color:var(--dim)}
+@media(max-width:640px){#player{width:150px;bottom:88px;right:12px}.cr-row{gap:11px}}
+kbd{background:rgba(255,255,255,.1);border:1px solid var(--line2);border-radius:5px;padding:1px 7px;font-size:11.5px;font-family:inherit}
+#progf{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--coral),var(--rose));transition:width .08s linear}
+
+/* ═══════════════ MENU OVERLAY ═══════════════ */
+#menu{
+  position:fixed;inset:0;z-index:70;background:rgba(5,9,24,.97);backdrop-filter:blur(6px);
+  display:none;overflow-y:auto;padding:90px 6vw 60px;
+}
+#menu.open{display:block}
+.mwrap{max-width:1080px;margin:0 auto}
+.msec{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:800;margin:26px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:9px}
+.mgrid a{
+  display:flex;gap:10px;align-items:baseline;text-decoration:none;color:var(--muted);
+  background:var(--card);border:1px solid var(--line2);border-radius:11px;padding:12px 14px;font-size:13.5px;transition:.18s;
+}
+.mgrid a:hover{border-color:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.mgrid a i{font-style:normal;font-size:10.5px;font-weight:800;color:var(--coral);letter-spacing:.1em}
+.mgrid.skitm a i{color:var(--sky)}
+#mclose{position:fixed;top:16px;right:26px;z-index:80}
+
+/* ═══════════════ SECTIONS ═══════════════ */
+main{position:relative;z-index:1}
+section{
+  max-width:1180px;margin:0 auto;padding:88px 26px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.rev.in{opacity:1;transform:none}
+
+.num{font-size:11.5px;font-weight:800;letter-spacing:.22em;color:var(--a);text-transform:uppercase}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--a);font-weight:800;margin-bottom:11px}
+h1{font-size:clamp(32px,5.4vw,66px);line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(25px,3.6vw,44px);line-height:1.14;letter-spacing:-.01em;margin-top:8px}
+h3{font-size:16.5px;color:var(--gold);margin-bottom:6px;letter-spacing:.02em}
+.rule{width:72px;height:4px;background:var(--a);border-radius:3px;margin:16px 0 24px}
+.lede{font-size:17px;color:var(--muted);max-width:62ch}
+
+/* ═══════════════ DOODLES ═══════════════ */
+.doodle{
+  position:absolute;stroke:var(--a);fill:none;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.17;pointer-events:none;z-index:0;
+}
+.doodle.f{opacity:.9;position:static;stroke-width:2}
+.dfloat{animation:bob 7s ease-in-out infinite}
+.dfloat2{animation:bob 9s ease-in-out infinite reverse}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(3deg)}}
+.spin{animation:sp 44s linear infinite;transform-origin:50% 50%}
+@keyframes sp{to{transform:rotate(360deg)}}
+section > *:not(.doodle){position:relative;z-index:1}
+
+/* ═══════════════ PLACEHOLDER ═══════════════ */
+.ph{
+  background:linear-gradient(180deg,var(--card),rgba(20,30,66,.6));
+  border:1px dashed rgba(240,192,90,.35);border-left:5px solid var(--a);
+  border-radius:14px;padding:20px 22px;max-width:74ch;
+}
+.ph-label{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--a);font-weight:800;margin-bottom:9px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.who{background:rgba(255,255,255,.08);padding:3px 11px;border-radius:20px;color:var(--muted);letter-spacing:.04em;outline:none;min-width:52px;display:inline-block}
+.ph-body{min-height:70px;font-size:16.5px;line-height:1.75;color:var(--muted);outline:none;border-radius:7px;padding:5px 7px;transition:.18s}
+.ph-body:focus,.who:focus{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:0 0 0 2px rgba(240,192,90,.4)}
+.ph-body:empty:before,.who:empty:before{content:attr(data-hint);color:#5d6b92;font-style:italic}
+.chips{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;max-width:74ch}
+.chip{font-size:11.5px;color:var(--dim);border:1px solid var(--line2);border-radius:20px;padding:5px 12px;background:rgba(255,255,255,.02)}
+
+/* ═══════════════ LAYOUTS ═══════════════ */
+.split{display:grid;grid-template-columns:180px 1fr;gap:38px;align-items:start}
+.bignum{font-size:clamp(62px,9vw,120px);font-weight:800;line-height:.82;color:transparent;-webkit-text-stroke:2px var(--a);opacity:.9}
+.bignum small{display:block;font-size:10.5px;letter-spacing:.2em;-webkit-text-stroke:0;color:var(--dim);margin-top:14px;font-weight:800}
+.art2{display:grid;grid-template-columns:1fr 260px;gap:44px;align-items:center}
+.mid{text-align:center;display:flex;flex-direction:column;align-items:center}
+.mid .rule{margin:16px auto 24px}
+.mid .ph{text-align:left;width:100%}
+.mid .chips{justify-content:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;max-width:82ch;margin:24px 0}
+.mini{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:17px;border-top:3px solid var(--a);transition:.2s}
+.mini:hover{transform:translateY(-3px);border-color:var(--line);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.mini b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.mini small{color:var(--dim);font-size:12.8px;line-height:1.55;display:block}
+.mini small.btsx{outline:none;border-radius:6px;padding:3px 5px;min-height:34px;transition:.18s}
+.mini small.btsx:focus{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:0 0 0 2px rgba(180,156,240,.45)}
+.mini small.btsx:empty:before{content:attr(data-hint);color:#5d6b92;font-style:italic}
+
+/* ── crew cards ── */
+.crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:13px;max-width:84ch;margin:26px 0}
+.cw{
+  background:linear-gradient(180deg,var(--card),rgba(20,30,66,.55));
+  border:1px solid var(--line2);border-left:4px solid var(--a);border-radius:14px;padding:17px 18px;transition:.2s;
+}
+.cw:hover{transform:translateY(-3px);border-color:var(--line);box-shadow:0 12px 32px rgba(0,0,0,.32)}
+.cw .nm2{display:block;font-size:19px;font-weight:800;color:var(--ink);letter-spacing:.01em}
+.cw b{display:block;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a);margin:6px 0 0;font-weight:800}
+.cw .btsx{outline:none;border-radius:6px;padding:3px 5px;min-height:26px;transition:.18s}
+.cw .btsx:focus{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:0 0 0 2px rgba(180,156,240,.45)}
+.cw .btsx:empty:before{content:attr(data-hint);color:#5d6b92;font-style:italic;letter-spacing:0;text-transform:none}
+.mini .ic{width:30px;height:30px;stroke:var(--a);fill:none;stroke-width:2.2;stroke-linecap:round;margin-bottom:9px;opacity:.85}
+.qmark{font-size:76px;line-height:.55;color:var(--a);opacity:.45;font-family:Georgia,serif}
+.qtext{font-size:clamp(21px,3vw,34px);line-height:1.32;font-weight:300;margin:12px 0 8px;max-width:20ch}
+.qby{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.stats{display:flex;gap:38px;flex-wrap:wrap;margin:26px 0}
+.stat b{display:block;font-size:clamp(27px,3.8vw,42px);color:var(--a);line-height:1;font-weight:800}
+.stat small{color:var(--dim);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase}
+.merge{display:flex;align-items:stretch;gap:14px;flex-wrap:wrap;margin:26px 0;max-width:78ch}
+.mbox{flex:1;min-width:155px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:18px;text-align:center}
+.mbox svg{width:40px;height:40px;stroke:var(--a);fill:none;stroke-width:2.2;stroke-linecap:round;margin-bottom:8px}
+.mbox b{font-size:12.5px;color:var(--gold);letter-spacing:.09em}
+.mbox small{display:block;color:var(--dim);font-size:12px;margin-top:5px}
+.plus{align-self:center;font-size:26px;color:var(--a);font-weight:300}
+.band{
+  margin:0 -26px 30px;padding:44px 26px 36px;border-radius:0;
+  background:linear-gradient(112deg,rgba(240,192,90,.16) -20%,transparent 58%),rgba(255,255,255,.025);
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);
+}
+
+/* ═══════════════ HERO ═══════════════ */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding-top:120px;border-bottom:none;
+}
+#hero h1{
+  max-width:15ch;
+  background:linear-gradient(94deg,var(--gold) 8%,var(--coral) 52%,var(--rose) 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.route{display:flex;align-items:center;gap:15px;margin-top:34px;color:var(--muted);font-size:13.5px;flex-wrap:wrap;justify-content:center}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 6px rgba(255,138,92,.14)}
+.dot.b{background:var(--sky);box-shadow:0 0 0 6px rgba(127,179,238,.14)}
+.dash{width:120px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 17px)}
+.scrollcue{margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+.mouse{width:23px;height:36px;border:2px solid var(--dim);border-radius:13px;position:relative}
+.mouse:after{content:'';position:absolute;left:50%;top:7px;width:3px;height:7px;background:var(--gold);border-radius:2px;transform:translateX(-50%);animation:wheel 1.7s infinite}
+@keyframes wheel{0%{opacity:0;top:6px}35%{opacity:1}100%{opacity:0;top:20px}}
+
+/* ═══════════════ PART DIVIDER / SKIT ═══════════════ */
+.part{
+  min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:radial-gradient(760px 460px at 50% 42%,rgba(127,179,238,.16),transparent 68%);
+}
+.part h2{
+  font-size:clamp(28px,5vw,58px);max-width:17ch;
+  background:linear-gradient(94deg,var(--sky),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.part .sub{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+.skit{--a:var(--sky);border-left:4px solid rgba(127,179,238,.4)}
+.skit-tag{
+  display:inline-flex;align-items:center;gap:9px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:800;color:var(--sky);background:rgba(127,179,238,.13);padding:6px 15px;border-radius:20px;margin-bottom:16px;
+}
+.scene-tag{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#0a0f22;background:var(--gold);padding:5px 13px;border-radius:20px;font-weight:800}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.script{max-width:84ch;margin:24px 0}
+.ln{display:flex;gap:18px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:flex-start}
+.ln:last-child{border-bottom:none}
+.nm{flex:0 0 150px;font-weight:800;font-size:12px;letter-spacing:.07em;text-transform:uppercase;padding-top:4px}
+.tx{flex:1;font-size:16.5px;line-height:1.62}
+.dir{font-style:italic;color:var(--dim);font-size:14px;padding:13px 0 13px 168px}
+.c-narrator{color:var(--gold)}.c-student{color:var(--rose)}.c-soldier{color:var(--coral)}
+.c-dancer{color:var(--violet)}.c-villager{color:var(--teal)}.c-historian{color:var(--sky)}
+.c-leader{color:#ffd77a}
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;max-width:82ch;margin-top:26px}
+.ccard{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:15px 17px;transition:.2s}
+.ccard:hover{border-color:rgba(127,179,238,.45);transform:translateY(-3px)}
+.ccard b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.ccard small{color:var(--dim);font-size:12px;outline:none;display:block;border-radius:5px;padding:2px 4px}
+.ccard small:focus{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:0 0 0 2px rgba(127,179,238,.4)}
+.ph.blue{border-left-color:var(--sky);border-color:rgba(127,179,238,.4);max-width:80ch;margin-top:26px}
+.ph.blue .ph-label{color:var(--sky)}
+.ph.blue .ph-body{min-height:52px;font-size:15.5px}
+.ph.blue .ph-body:focus{box-shadow:0 0 0 2px rgba(127,179,238,.4)}
+
+/* ═══════════════ CONCLUSION + FOOTER ═══════════════ */
+.roots{display:flex;gap:24px;flex-wrap:wrap;margin-top:26px;max-width:82ch}
+.root{flex:1;min-width:230px;background:var(--card);border-radius:16px;padding:24px;border-top:4px solid var(--coral)}
+.root.b{border-top-color:var(--sky)}
+.eq{text-align:center;font-size:clamp(18px,2.5vw,30px);margin:36px 0;color:var(--muted);line-height:1.8;font-weight:300}
+.eq b{color:var(--gold);font-weight:600}
+footer{text-align:center;padding:52px 26px 70px;color:var(--dim);font-size:12.5px;border-top:1px solid var(--line2);position:relative;z-index:1}
+footer svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:2;opacity:.6;margin-bottom:14px}
+#tt{position:fixed;right:24px;bottom:24px;z-index:50;opacity:0;pointer-events:none;transition:.3s;
+  background:var(--card);border:1px solid var(--line);color:var(--gold);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:17px}
+#tt.show{opacity:1;pointer-events:auto}
+#tt:hover{background:var(--gold);color:#0a0f22}
+
+@media(max-width:820px){
+  .split{grid-template-columns:1fr;gap:16px}
+  .bignum{font-size:56px}
+  .art2{grid-template-columns:1fr;gap:26px}
+  .art2 svg{max-width:190px;margin:0 auto}
+  .nm{flex:0 0 100px;font-size:11px}
+  .tx{font-size:15.5px}
+  .dir{padding-left:118px}
+  section{padding:60px 20px}
+  .band{margin:0 -20px 26px;padding:34px 20px 28px}
+  .doodle{opacity:.09}
+  .tin{padding:11px 16px}
+  .logo span{display:none}
+}
+@media print{body{background:#fff;color:#000}#top,#menu,#tt,.doodle{display:none}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ DOODLE LIBRARY ══════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="d-dhow" viewBox="0 0 100 100">
+    <path d="M14 70q36 15 72 0l-9 11q-27 11-54 0z"/><path d="M50 68V12"/>
+    <path d="M53 16l24 48H53z"/><path d="M47 26L25 64h22"/><path d="M14 78q36 12 72 0"/>
+  </symbol>
+  <symbol id="d-drum" viewBox="0 0 100 100">
+    <path d="M28 24h44l-5 28q-17 8-34 0z"/><ellipse cx="50" cy="24" rx="22" ry="7"/>
+    <path d="M33 52l-5 32h44l-5-32"/><path d="M35 30l8 22M65 30l-8 22M50 28v26"/>
+  </symbol>
+  <symbol id="d-elephant" viewBox="0 0 100 100">
+    <path d="M24 74c-4-24 6-42 26-43s30 12 28 28v15"/>
+    <path d="M34 74v10M56 74v10M72 72v10M24 74v10"/>
+    <path d="M28 46c-8 7-8 22-2 28 4 4 10 1 10-5"/>
+    <path d="M44 34c11-2 15 7 13 16-2 8-13 8-15 2"/>
+    <path d="M31 62c4 4 9 4 12 1"/><circle cx="40" cy="46" r="1.8" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="d-lotus" viewBox="0 0 100 100">
+    <path d="M50 26c-9 15-9 30 0 43 9-13 9-28 0-43z"/>
+    <path d="M50 69C36 66 26 54 26 40c12 3 21 14 24 29z"/>
+    <path d="M50 69c14-3 24-15 24-29-12 3-21 14-24 29z"/>
+    <path d="M50 70c-16 2-28-4-34-14 14-4 27 2 34 14zM50 70c16 2 28-4 34-14-14-4-27 2-34 14z"/>
+  </symbol>
+  <symbol id="d-paisley" viewBox="0 0 100 100">
+    <path d="M40 80C16 72 18 38 44 28c22-8 38 8 32 24-5 13-22 15-28 5-5-9 5-16 14-11"/>
+    <circle cx="46" cy="48" r="3.5"/>
+  </symbol>
+  <symbol id="d-baobab" viewBox="0 0 100 100">
+    <path d="M38 84V52M62 84V52"/><path d="M38 54q12-8 24 0"/>
+    <path d="M50 52V30M50 34L30 22M50 34l20-12M50 40L26 36M50 40l24-4M42 30L34 16M58 30l8-14"/>
+    <path d="M24 86h52"/>
+  </symbol>
+  <symbol id="d-sun" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="18"/>
+    <path d="M50 18V6M50 94V82M18 50H6M94 50H82M27 27l-9-9M82 82l-9-9M73 27l9-9M18 82l9-9"/>
+  </symbol>
+  <symbol id="d-waves" viewBox="0 0 100 100">
+    <path d="M6 40q12-11 24 0t24 0 24 0 16 0"/><path d="M6 56q12-11 24 0t24 0 24 0 16 0"/>
+    <path d="M6 72q12-11 24 0t24 0 24 0 16 0"/>
+  </symbol>
+  <symbol id="d-arch" viewBox="0 0 100 100">
+    <path d="M24 86V46c0-22 52-22 52 0v40"/><path d="M36 86V50c0-14 28-14 28 0v36"/>
+    <path d="M50 24v-8M46 20h8M16 86h68"/>
+  </symbol>
+  <symbol id="d-feather" viewBox="0 0 100 100">
+    <path d="M50 90V44"/><ellipse cx="50" cy="30" rx="16" ry="21"/>
+    <ellipse cx="50" cy="30" rx="8" ry="11"/><circle cx="50" cy="30" r="3.2"/>
+    <path d="M40 54q10 8 20 0"/>
+  </symbol>
+  <symbol id="d-compass" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="30"/><path d="M50 12l7 31 31 7-31 7-7 31-7-31-31-7 31-7z"/>
+  </symbol>
+  <symbol id="d-mask" viewBox="0 0 100 100">
+    <path d="M50 12c16 0 24 14 24 34s-10 42-24 42-24-22-24-42S34 12 50 12z"/>
+    <path d="M36 42q7-6 14 0M50 42q7-6 14 0"/>
+    <path d="M50 50v14M42 72q8 6 16 0"/><path d="M32 24q18-8 36 0"/>
+  </symbol>
+  <symbol id="d-palm" viewBox="0 0 100 100">
+    <path d="M50 88q-2-32 4-52"/>
+    <path d="M54 34Q34 24 20 34M54 34q20-12 32-2M54 34Q40 14 24 16M54 34q16-20 30-14M54 34v-14"/>
+    <path d="M34 88h34"/>
+  </symbol>
+  <symbol id="d-pot" viewBox="0 0 100 100">
+    <path d="M34 34h32l6 10q4 22-22 22T28 44z"/><path d="M30 34q20-8 40 0"/>
+    <path d="M42 66v18h16V66M34 84h32"/>
+  </symbol>
+  <symbol id="d-hands" viewBox="0 0 100 100">
+    <path d="M22 74V44q0-8 7-8t7 8v14"/><path d="M36 58V34q0-8 7-8t7 8v24"/>
+    <path d="M50 58V38q0-8 7-8t7 8v22"/><path d="M64 60V46q0-8 7-8t7 8v28q0 14-14 14H40q-12 0-18-14"/>
+  </symbol>
+  <symbol id="d-star" viewBox="0 0 100 100">
+    <path d="M50 14l10 26 26 10-26 10-10 26-10-26-26-10 26-10z"/>
+  </symbol>
+  <symbol id="d-drums2" viewBox="0 0 100 100">
+    <ellipse cx="34" cy="40" rx="18" ry="6"/><path d="M16 40v26q0 8 18 8t18-8V40"/>
+    <ellipse cx="70" cy="52" rx="14" ry="5"/><path d="M56 52v20q0 6 14 6t14-6V52"/>
+    <path d="M22 46l8 22M46 46l-8 22"/>
+  </symbol>
+</defs></svg>
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div id="top">
+  <div class="tin">
+    <a class="logo" href="#hero">
+      <svg viewBox="0 0 100 100" stroke="var(--gold)" fill="none" stroke-width="4" stroke-linecap="round"><use href="#d-dhow"/></svg>
+      <b>The Siddis<span>African Roots in India</span></b>
+    </a>
+    <div class="grow"></div>
+    <span id="saved">Saved ✓</span>
+    <button class="tbtn" onclick="jump('skit')">🎭 The Skit</button>
+    <button class="tbtn" id="ed" onclick="edit()">✎ Edit</button>
+    <button class="tbtn" onclick="share(1)">🔗 Share</button>
+    <button class="tbtn" onclick="menu(1)">☰ Contents</button>
+  </div>
+  <div id="prog"><div id="progf"></div></div>
+</div>
+
+<!-- ══════════ SHARE / SAVE PANEL ══════════ -->
+<div id="sheet" onclick="if(event.target===this)share(0)">
+  <div class="sbox">
+    <button class="tbtn" style="float:right" onclick="share(0)">✕</button>
+    <h3 style="font-size:20px;color:var(--gold);margin-bottom:6px">Save &amp; share your writing</h3>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:6px">Everything you type is saved on this device straight away. To work across phones, laptops and with your friends, turn on the shared copy.</p>
+
+    <div class="srow" id="syncrow">
+      <div>
+        <b>☁️ Shared copy <span id="syncbadge">off</span></b>
+        <small id="syncdesc">Creates one shared copy on the internet. Everyone who opens the link edits the same thing — your friends type their lines at home and they show up for you within seconds.</small>
+      </div>
+      <button class="tbtn on" id="syncbtn" onclick="startSync()">Turn on</button>
+    </div>
+    <div id="linkout"></div>
+
+    <div class="srow">
+      <div>
+        <b>🔗 Snapshot link</b>
+        <small>Works without the shared copy: packs the current text into one long link. Good for sending a fixed version to someone.</small>
+      </div>
+      <button class="tbtn" onclick="mkLink()">Copy link</button>
+    </div>
+
+    <div class="srow">
+      <div>
+        <b>💾 Backup file</b>
+        <small>Download a small <code>.json</code> file as a safety copy. Load it back any time.</small>
+      </div>
+      <span style="display:flex;gap:8px">
+        <button class="tbtn" onclick="dl()">Download</button>
+        <button class="tbtn" onclick="document.getElementById('up').click()">Load</button>
+      </span>
+    </div>
+    <input type="file" id="up" accept=".json" hidden onchange="ld(this)">
+
+    <div class="srow">
+      <div>
+        <b>🧹 Start over</b>
+        <small>Clears every box on this device. Cannot be undone.</small>
+      </div>
+      <button class="tbtn" onclick="wipe()">Clear all</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ══════════ THANK YOU SCREEN (spacebar) ══════════ -->
+<div id="thanks">
+  <button class="tbtn" id="tclose" onclick="thanks(0)">✕ Close &nbsp;<span style="opacity:.6">Esc</span></button>
+  <div class="tstars"></div>
+  <svg class="doodle dfloat" style="width:150px;height:150px;top:9%;left:7%;--a:var(--gold);opacity:.3"><use href="#d-dhow"/></svg>
+  <svg class="doodle dfloat2" style="width:140px;height:140px;top:12%;right:8%;--a:var(--coral);opacity:.3"><use href="#d-drum"/></svg>
+  <svg class="doodle spin" style="width:130px;height:130px;bottom:12%;left:10%;--a:var(--rose);opacity:.3"><use href="#d-sun"/></svg>
+  <svg class="doodle dfloat" style="width:150px;height:150px;bottom:10%;right:9%;--a:var(--teal);opacity:.3"><use href="#d-elephant"/></svg>
+
+  <div class="roll"><div class="rollin" id="rollin"></div></div>
+
+  <audio id="mp3" preload="auto" src="song.mp3"></audio>
+  <div id="player"></div>
+
+  <div class="tbar">
+    <button class="tbtn on" id="playbtn" onclick="playSong()">▶ Play the song</button>
+    <button class="tbtn" id="ytbtn" onclick="playYT()" style="display:none">Use YouTube instead</button>
+    <button class="tbtn" onclick="replayRoll()">↻ Replay credits</button>
+    <span class="tnote" id="tnote">“Love Me Again” — John Newman.</span>
+  </div>
+</div>
+
+<!-- ══════════ MENU ══════════ -->
+<div id="menu">
+  <button class="tbtn" id="mclose" onclick="menu(0)">✕ Close</button>
+  <div class="mwrap">
+    <h2 style="font-size:26px">Contents</h2>
+    <div class="msec">Part One · The Presentation</div>
+    <div class="mgrid" id="m1"></div>
+    <div class="msec">Part Two · The Skit</div>
+    <div class="mgrid skitm" id="m2"></div>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero" data-t="Home" data-part="1">
+  <svg class="doodle dfloat" style="width:150px;height:150px;top:11%;left:5%"><use href="#d-dhow"/></svg>
+  <svg class="doodle dfloat2" style="width:120px;height:120px;top:16%;right:7%;--a:var(--coral)"><use href="#d-lotus"/></svg>
+  <svg class="doodle spin" style="width:110px;height:110px;bottom:16%;left:11%;--a:var(--rose)"><use href="#d-sun"/></svg>
+  <svg class="doodle dfloat" style="width:135px;height:135px;bottom:13%;right:9%;--a:var(--teal)"><use href="#d-elephant"/></svg>
+  <svg class="doodle" style="width:190px;height:130px;top:44%;left:50%;transform:translateX(-50%);--a:var(--sky)"><use href="#d-waves"/></svg>
+
+  <div class="kicker">A story of migration, courage and belonging</div>
+  <h1>The Siddis: African Roots in India</h1>
+  <p class="lede" style="margin-top:18px">For over a thousand years, people crossed the Indian Ocean from East Africa to India — and made it home.</p>
+  <div class="route">
+    <div class="dot"></div><span>East Africa</span>
+    <div class="dash"></div>
+    <div class="dot b"></div><span>Gujarat · Karnataka · Maharashtra · Goa</span>
+  </div>
+  <div class="scrollcue"><div class="mouse"></div><span>Scroll</span></div>
+</section>
+
+<!-- ══════════ BEHIND THE SCENES ══════════ -->
+<section class="rev" id="bts" data-t="Behind the Scenes" data-part="1" style="--a:var(--violet)">
+  <svg class="doodle dfloat" style="width:140px;height:140px;top:14%;right:4%;--a:var(--gold)"><use href="#d-hands"/></svg>
+  <svg class="doodle dfloat2" style="width:120px;height:120px;bottom:12%;left:4%;--a:var(--teal)"><use href="#d-star"/></svg>
+  <div class="kicker">Before you scroll on</div>
+  <h2>Behind the Scenes</h2><div class="rule"></div>
+  <p class="lede">Who did what to put this together.</p>
+
+  <div class="crew">
+    <div class="cw"><span class="nm2">Evan</span><b>Team Leader · Website</b></div>
+    <div class="cw"><span class="nm2">Vihaan</span><b>Co-Leader · Script</b></div>
+    <div class="cw"><span class="nm2">Prince</span><b>Research</b></div>
+    <div class="cw"><span class="nm2">Abdul</span><b>Research</b></div>
+    <div class="cw"><span class="nm2">Arnav</span><b>Quiz</b></div>
+    <div class="cw"><span class="nm2">Keron</span><b>Props</b></div>
+    <div class="cw"><span class="nm2">Kush</span><b class="btsx" contenteditable="false" data-hint="Role…"></b></div>
+  </div>
+</section>
+
+<!-- ══════════ 01 ══════════ -->
+<section class="rev" id="s1" data-t="Who Are the Siddis?" data-part="1" style="--a:var(--coral)">
+  <svg class="doodle dfloat" style="width:150px;height:150px;top:16%;right:4%"><use href="#d-elephant"/></svg>
+  <div class="split">
+    <div class="bignum">01<small>WHO THEY ARE</small></div>
+    <div>
+      <h2>Who Are the Siddis?</h2><div class="rule"></div>
+      <p class="lede">The Siddis are communities of African origin living in India. They have been part of Indian society for centuries and developed a unique African-Indian cultural identity.</p>
+      <div class="chips"><span class="chip">Who they are today</span><span class="chip">Where they live</span><span class="chip">Rough population</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 ══════════ -->
+<section class="rev" id="s2" data-t="African Origins" data-part="1" style="--a:var(--gold)">
+  <svg class="doodle dfloat2" style="width:130px;height:130px;bottom:10%;left:3%;--a:var(--teal)"><use href="#d-mask"/></svg>
+  <div class="num">02 · Origins</div>
+  <div class="art2" style="margin-top:12px">
+    <div>
+      <h2>The African Origins of the Siddis</h2><div class="rule"></div>
+      <p class="lede">Many Siddis trace their ancestry to sub-Saharan Africa, especially Bantu-speaking populations. Historical and genetic research supports their African ancestry.</p>
+      <div class="chips"><span class="chip">East African coast</span><span class="chip">Bantu peoples</span><span class="chip">Meaning of "Siddi"</span></div>
+    </div>
+    <svg class="doodle f dfloat" viewBox="0 0 100 100" style="width:100%;--a:var(--gold)"><use href="#d-baobab"/></svg>
+  </div>
+</section>
+
+<!-- ══════════ 03 ══════════ -->
+<section class="rev" id="s3" data-t="The Indian Ocean" data-part="1" style="--a:var(--sky)">
+  <div class="band">
+    <svg class="doodle dfloat" style="width:120px;height:120px;top:-6%;right:6%"><use href="#d-compass"/></svg>
+    <div class="kicker">03 · The crossing</div>
+    <h2>The Indian Ocean: A Bridge Between Africa and India</h2>
+    <p class="lede" style="margin-top:14px">The Indian Ocean connected East Africa with India through trade and travel. These routes helped people move between Africa and the Indian subcontinent.</p>
+  </div>
+  <svg class="doodle f" viewBox="0 0 900 120" preserveAspectRatio="none" style="width:100%;max-width:840px;height:110px;--a:var(--sky);opacity:.8">
+    <path d="M0 78c60-24 120 24 180 0s120-32 180-8 120 32 180 8 120-28 180-6 120 28 180 8"/>
+    <path d="M0 96c60-24 120 24 180 0s120-32 180-8 120 32 180 8 120-28 180-6 120 28 180 8" opacity=".45"/>
+    <g transform="translate(388,4) scale(1.15)"><use href="#d-dhow" style="stroke:var(--gold)"/></g>
+  </svg>
+  <div class="chips"><span class="chip">Monsoon winds</span><span class="chip">Trade routes</span><span class="chip">Ports &amp; dhows</span></div>
+</section>
+
+<!-- ══════════ 04 ══════════ -->
+<section class="rev" id="s4" data-t="How They Reached India" data-part="1" style="--a:var(--teal)">
+  <svg class="doodle dfloat2" style="width:140px;height:140px;top:12%;right:3%;--a:var(--gold)"><use href="#d-compass"/></svg>
+  <div class="num">04 · Arrival</div>
+  <h2 style="margin-top:8px">How Did Africans Reach India?</h2><div class="rule"></div>
+  <p class="lede">Africans reached India in different circumstances — as merchants, sailors, soldiers, and, in many cases, through the Indian Ocean slave trade.</p>
+  <div class="cards">
+    <div class="mini"><svg class="ic"><use href="#d-pot"/></svg><b>By trade</b><small>Merchants and sailors working the Indian Ocean routes for centuries.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-compass"/></svg><b>By service</b><small>Soldiers and mercenaries hired by Indian rulers for their skill and loyalty.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-hands"/></svg><b>By force</b><small>Many were brought against their will through the Indian Ocean slave trade.</small></div>
+  </div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section class="rev" id="s5" data-t="Soldiers &amp; Warriors" data-part="1" style="--a:var(--coral)">
+  <div class="band" style="background:linear-gradient(112deg,rgba(255,138,92,.2) -20%,transparent 56%),rgba(0,0,0,.2)">
+    <div class="art2" style="align-items:center">
+      <div>
+        <div class="kicker">05 · Strength</div>
+        <h2>Siddis as Soldiers and Warriors</h2>
+        <p class="lede" style="margin-top:12px">Siddis served in the armies and courts of several Indian states. Some rose to important military and political positions.</p>
+      </div>
+      <svg class="doodle f dfloat" viewBox="0 0 100 100" style="width:100%;max-width:180px;--a:var(--gold)"><use href="#d-arch"/></svg>
+    </div>
+  </div>
+  <div class="chips"><span class="chip">Naval power</span><span class="chip">Janjira fort</span><span class="chip">Loyalty &amp; discipline</span></div>
+</section>
+
+<!-- ══════════ 06 ══════════ -->
+<section class="rev" id="s6" data-t="Malik Ambar" data-part="1" style="--a:var(--gold)">
+  <svg class="doodle dfloat" style="width:160px;height:160px;top:14%;right:4%;--a:var(--violet)"><use href="#d-paisley"/></svg>
+  <div class="num">06 · A life</div>
+  <div class="qmark">“</div>
+  <div class="qtext">From an enslaved boy in Ethiopia to the most feared strategist in the Deccan.</div>
+  <div class="qby">Malik Ambar · c. 1548 – 1626</div>
+  <div class="rule"></div>
+  <div class="stats">
+    <div class="stat"><b>1548</b><small>Born in Ethiopia</small></div>
+    <div class="stat"><b>1600s</b><small>Regent of Ahmadnagar</small></div>
+    <div class="stat"><b>1626</b><small>Died undefeated</small></div>
+  </div>
+  <p class="lede">Malik Ambar was born in Ethiopia and became a powerful military leader and administrator in the Deccan. He rose to great influence in the Ahmadnagar Sultanate.</p>
+  <div class="chips"><span class="chip">Guerrilla warfare</span><span class="chip">Held off the Mughals</span><span class="chip">Founded Khadki (Aurangabad)</span></div>
+</section>
+
+<!-- ══════════ 07 ══════════ -->
+<section class="rev" id="s7" data-t="Kingdoms of India" data-part="1" style="--a:var(--violet)">
+  <svg class="doodle dfloat2" style="width:140px;height:140px;bottom:12%;right:5%;--a:var(--gold)"><use href="#d-arch"/></svg>
+  <div class="split">
+    <div>
+      <div class="bignum">07<small>KINGDOMS</small></div>
+      <div class="chips" style="flex-direction:column;align-items:flex-start;margin-top:22px">
+        <span class="chip">Ahmadnagar</span><span class="chip">Bijapur</span>
+        <span class="chip">Gujarat</span><span class="chip">Bengal</span><span class="chip">Janjira</span>
+      </div>
+    </div>
+    <div>
+      <h2>Siddis in the Kingdoms of India</h2><div class="rule"></div>
+      <p class="lede">African-origin leaders and soldiers played important roles in places such as the Deccan and Janjira. Their history became part of India's diverse political and cultural story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 08 ══════════ -->
+<section class="rev" id="s8" data-t="Culture: Africa Meets India" data-part="1" style="--a:var(--teal)">
+  <div class="kicker">08 · Fusion</div>
+  <h2>Siddi Culture: Africa Meets India</h2><div class="rule"></div>
+  <p class="lede">Siddi culture is a unique blend of East African heritage and South Asian traditions. The Siddi people integrate local regional customs, languages and religions while preserving distinct ancestral music, dance and community ritual.</p>
+  <div class="merge">
+    <div class="mbox"><svg><use href="#d-baobab"/></svg><b>AFRICAN</b><small>Rhythm · memory · movement</small></div>
+    <div class="plus">+</div>
+    <div class="mbox"><svg><use href="#d-lotus"/></svg><b>INDIAN</b><small>Food · dress · faith · tongue</small></div>
+    <div class="plus">=</div>
+    <div class="mbox" style="border-color:rgba(79,209,197,.5)"><svg><use href="#d-star"/></svg><b>SIDDI</b><small>Something entirely its own</small></div>
+  </div>
+</section>
+
+<!-- ══════════ 09 ══════════ -->
+<section class="rev mid" id="s9" data-t="Music, Dance &amp; Traditions" data-part="1" style="--a:var(--rose)">
+  <svg class="doodle dfloat" style="width:130px;height:130px;top:14%;left:5%;--a:var(--gold)"><use href="#d-drum"/></svg>
+  <svg class="doodle dfloat2" style="width:130px;height:130px;bottom:14%;right:5%;--a:var(--violet)"><use href="#d-feather"/></svg>
+  <div class="kicker">09 · The heartbeat</div>
+  <h2>Music, Dance, and Traditions</h2>
+  <div class="rule"></div>
+  <svg class="doodle f dfloat" viewBox="0 0 100 100" style="width:120px;height:120px;margin:6px auto 20px;--a:var(--rose)"><use href="#d-drums2"/></svg>
+  <div class="cards" style="max-width:78ch">
+    <div class="mini"><svg class="ic"><use href="#d-drums2"/></svg><b>Dhamal</b><small>A vibrant devotional dance and musical expression featuring rhythmic drumming and call-and-response chanting.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-drum"/></svg><b>Instruments</b><small>Traditional percussive instruments like the <em>dammam</em> (large bass drum), the <em>duf</em> and the <em>gumte</em>.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-feather"/></svg><b>Cultural role</b><small>A vital link to African roots and communal identity during festivals and celebrations.</small></div>
+  </div>
+  <div class="chips"><span class="chip">Dhamal dance</span><span class="chip">Goma drums</span><span class="chip">Songs of ancestors</span></div>
+</section>
+
+<!-- ══════════ 10 ══════════ -->
+<section class="rev" id="s10" data-t="Religion &amp; Community" data-part="1" style="--a:var(--teal)">
+  <svg class="doodle dfloat2" style="width:140px;height:140px;top:16%;right:4%;--a:var(--gold)"><use href="#d-lotus"/></svg>
+  <div class="num">10 · Faith &amp; home</div>
+  <h2 style="margin-top:8px">Religion and Community Life</h2><div class="rule"></div>
+  <div class="cards">
+    <div class="mini"><svg class="ic"><use href="#d-arch"/></svg><b>Religious diversity</b><small>Siddis practise Islam (mostly Sufi), Hinduism and Christianity depending on the region, yet share underlying cultural customs.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-lotus"/></svg><b>Syncretism</b><small>Many groups blend regional folk deities with ancestor worship, such as honouring ancestral spirits known as <em>hiriyaru</em> or <em>hireru</em>.</small></div>
+    <div class="mini"><svg class="ic"><use href="#d-hands"/></svg><b>Integration</b><small>They speak local languages like Gujarati, Kannada, Konkani or Urdu, wearing regional attire while maintaining a tight-knit community structure.</small></div>
+  </div>
+</section>
+
+<!-- ══════════ 11 ══════════ -->
+<section class="rev" id="s11" data-t="Identity in Modern India" data-part="1" style="--a:var(--sky)">
+  <svg class="doodle spin" style="width:120px;height:120px;bottom:14%;left:4%;--a:var(--gold)"><use href="#d-sun"/></svg>
+  <div class="num">11 · Today</div>
+  <div class="qmark">“</div>
+  <div class="qtext">African by ancestry. Indian by home. Siddi by identity.</div>
+  <div class="rule"></div>
+  <p class="lede">Granted <b>Scheduled Tribe (ST)</b> status in several states, their modern identity focuses on overcoming socioeconomic marginalisation and colorism, and on seeking political representation.</p>
+  <div class="chips"><span class="chip">Scheduled Tribe status</span><span class="chip">Sport &amp; education</span><span class="chip">Dual heritage</span></div>
+</section>
+
+<!-- ══════════ 12 ══════════ -->
+<section class="rev" id="s12" data-t="Challenges" data-part="1" style="--a:var(--rose)">
+  <div class="band" style="background:linear-gradient(112deg,rgba(243,139,168,.18) -20%,transparent 54%),rgba(0,0,0,.18)">
+    <div class="kicker">12 · The hard part</div>
+    <h2>Challenges Faced by the Siddi Community</h2>
+  </div>
+  <p class="lede">The Siddi community faces persistent racial, social and economic marginalisation.</p>
+  <div class="cards">
+    <div class="mini"><b>Poverty</b><small>Widespread poverty across Siddi communities.</small></div>
+    <div class="mini"><b>Education &amp; health</b><small>Low literacy rates and limited access to quality healthcare and education.</small></div>
+    <div class="mini"><b>Discrimination</b><small>Acute racial and social discrimination due to their distinct African ancestry.</small></div>
+  </div>
+</section>
+
+<!-- ══════════ 13 ══════════ -->
+<section class="rev mid" id="s13" data-t="Preserving Heritage" data-part="1" style="--a:var(--gold)">
+  <svg class="doodle dfloat" style="width:130px;height:130px;top:16%;right:6%;--a:var(--teal)"><use href="#d-hands"/></svg>
+  <svg class="doodle dfloat2" style="width:120px;height:120px;bottom:14%;left:6%;--a:var(--coral)"><use href="#d-paisley"/></svg>
+  <div class="kicker">13 · Keeping it alive</div>
+  <h2>Preserving Siddi Heritage</h2>
+  <div class="rule"></div>
+  <p class="lede">Siddi heritage — an Afro-Indian diaspora rooted in centuries of migration, resilience and cross-cultural blending — is kept alive through oral histories, rhythmic <em>Dhamaal</em> beats, sacred shrine traditions and community memory.</p>
+  <div class="chips"><span class="chip">Passing on music</span><span class="chip">Oral stories</span><span class="chip">Cultural festivals</span></div>
+</section>
+
+<!-- ══════════ 14 ══════════ -->
+<section class="rev" id="s14" data-t="Contribution to History" data-part="1" style="--a:var(--coral)">
+  <svg class="doodle dfloat2" style="width:150px;height:150px;bottom:10%;right:4%;--a:var(--gold)"><use href="#d-elephant"/></svg>
+  <div class="split">
+    <div class="bignum">14<small>LEGACY</small></div>
+    <div>
+      <h2>The Siddi Contribution to Indian History</h2><div class="rule"></div>
+      <p class="lede">The Siddi community, descendants of East African Bantu peoples arriving via trade and servitude since the 7th century, shaped Indian history through military leadership, naval defence and unique cultural blending in the Deccan and western coastal regions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SKIT OPENING ══════════ -->
+<section class="part" id="skit" data-t="★ The Skit" data-part="2">
+  <svg class="doodle dfloat" style="width:140px;height:140px;top:16%;left:7%;--a:var(--sky)"><use href="#d-drum"/></svg>
+  <svg class="doodle dfloat2" style="width:140px;height:140px;top:18%;right:7%;--a:var(--violet)"><use href="#d-mask"/></svg>
+  <svg class="doodle dfloat" style="width:120px;height:120px;bottom:14%;left:12%;--a:var(--gold)"><use href="#d-feather"/></svg>
+  <svg class="doodle spin" style="width:120px;height:120px;bottom:12%;right:11%;--a:var(--coral)"><use href="#d-star"/></svg>
+  <div class="sub">Part Two · The Performance</div>
+  <h2>THE SIDDIS — AFRICAN ROOTS, IN INDIA</h2>
+  <p class="lede" style="margin-top:16px">A short skit in seven scenes.</p>
+  <div class="ph blue" style="text-align:left">
+    <div class="ph-label">Introduction <span class="who" contenteditable="false" data-hint="Name"></span></div>
+    <div class="ph-body" contenteditable="false" data-hint="Two or three lines to introduce the skit…"></div>
+  </div>
+</section>
+
+<!-- CAST -->
+<section class="rev skit" id="cast" data-t="The Cast" data-part="2">
+  <div class="skit-tag">🎭 The Skit · Cast</div>
+  <h2>Who's Who</h2><div class="rule"></div>
+  <div class="cast">
+    <div class="ccard"><b class="c-narrator">Narrator</b><small>Vihaan</small></div>
+    <div class="ccard"><b class="c-villager">Indian Villager</b><small>Abdul</small></div>
+    <div class="ccard"><b class="c-soldier">Siddi Soldier</b><small>Prince</small></div>
+    <div class="ccard"><b class="c-dancer">Siddi Dancer</b><small>Keron</small></div>
+    <div class="ccard"><b class="c-leader">Community Leader</b><small>Kush</small></div>
+    <div class="ccard"><b class="c-historian">Historian</b><small>Arnav</small></div>
+    <div class="ccard"><b class="c-student">Student</b><small>Evan</small></div>
+  </div>
+</section>
+
+<!-- SCENE 1 -->
+<section class="rev skit" id="sc1" data-t="Scene 1 — Across the Ocean" data-part="2">
+  <svg class="doodle dfloat" style="width:130px;height:130px;top:10%;right:5%;--a:var(--sky)"><use href="#d-dhow"/></svg>
+  <div class="skit-tag">🎭 Scene 1 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 1</span><h2>Across the Ocean</h2></div>
+  <div class="script">
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">Many centuries ago, something BIG was happening in the Indian Ocean! People were travelling from East Africa to India. No aeroplanes… No Google Maps… No GPS… And definitely… <b>NO FOOD DELIVERY!</b></div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">WAIT! NO FOOD DELIVERY?! How did they survive?! No pizza? No burgers? Not even French fries?!</div></div>
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">They survived very carefully!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">I respect their courage… To be honest, I really don't think I could handle that trip, it's just too much for me.</div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">Wait! I see a ship! Who is coming?</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">Greetings! We have travelled from East Africa.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">From East Africa all the way to India?! Wow! How long did that journey take?</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">It was a long journey across the ocean.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">And you travelled without Google Maps?</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">Yes.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Respect! I get lost inside my own school sometimes!</div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">Welcome to India! But tell me… Did you bring snacks?</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">After travelling across the ocean, THAT is your first question?</div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">Of course! I'm Indian!</div></div>
+  </div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="rev skit" id="sc2" data-t="Scene 2 — Making India Home" data-part="2">
+  <svg class="doodle dfloat2" style="width:130px;height:130px;bottom:12%;left:4%;--a:var(--teal)"><use href="#d-palm"/></svg>
+  <div class="skit-tag">🎭 Scene 2 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 2</span><h2>Making India Home</h2></div>
+  <div class="script">
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">Over time, many Siddis decided to make India their home, and they ended up living in different parts of the country, like Gujarat, Karnataka, Maharashtra, and Goa. Some became workers and sailors. Some became soldiers. And some became important leaders.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So they didn't just visit India… They actually made India their home!</div></div>
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">Exactly!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">That's amazing! They originated from a different region of the globe, but over time, they became deeply integrated and played a significant role in the Indian community, leaving a lasting impact on the country's social fabric.</div></div>
+  </div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="rev skit" id="sc3" data-t="Scene 3 — Brave Soldiers" data-part="2">
+  <svg class="doodle dfloat" style="width:130px;height:130px;top:12%;right:4%;--a:var(--coral)"><use href="#d-arch"/></svg>
+  <div class="skit-tag">🎭 Scene 3 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 3</span><h2>Brave Soldiers</h2></div>
+  <div class="script">
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">That's right! We were brave soldiers. Strong, disciplined and ready for action!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Whoa! You look really strong! Can you defeat ten enemies at once?</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">Ten? Let's start with ONE!</div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">Good decision!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Yes, one at a time!</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">Don't worry. I am trained!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Good! If something goes down, you can bet I'll be taking cover behind that villager — they're my human shield, no question!</div></div>
+  </div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="rev skit" id="sc4" data-t="Scene 4 — Malik Ambar" data-part="2">
+  <svg class="doodle dfloat2" style="width:140px;height:140px;bottom:10%;right:4%;--a:var(--violet)"><use href="#d-paisley"/></svg>
+  <div class="skit-tag">🎭 Scene 4 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 4</span><h2>Enter the Historian: Malik Ambar</h2></div>
+  <div class="script">
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">STOP! Everyone, pay attention! I have come with HISTORY!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Oh no… Not again! History class!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">Don't worry! There will be no exam today.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">NO EXAM?! Let's go, greatest Historian!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">One famous African-born leader was <b>Malik Ambar</b>. He became a powerful military leader and administrator in the Deccan.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Wait! Malik Ambar was an African-born leader who became powerful in India?</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">Yes.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So he was not only a soldier… He was also a great leader and administrator!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">Exactly!</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">Malik Ambar was a brilliant leader.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So he was famous?</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">Very famous!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">More famous than me?</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">I have never heard of you.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">OUCH! That hurt more than my last exam result!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">But now you know about Malik Ambar.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">True! I came here knowing nothing… And now I know something! My parents will be so proud!</div></div>
+  </div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="rev skit" id="sc5" data-t="Scene 5 — Music and Dance" data-part="2">
+  <svg class="doodle dfloat" style="width:140px;height:140px;top:12%;left:4%;--a:var(--rose)"><use href="#d-drums2"/></svg>
+  <div class="skit-tag">🎭 Scene 5 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 5</span><h2>Music, Dance, Celebration</h2></div>
+  <div class="script">
+    <div class="dir">(Upbeat drum music begins. Siddi Dancer enters dancing.)</div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">I think the history lesson just turned into a dance show!</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">It's for Siddi culture! Music! Dance! Celebration!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">I'm really liking this history lesson, it's actually making sense and is pretty interesting!</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">Our music and dance connect us to our African heritage. They help us remember our ancestors and celebrate our culture.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So the music and dance help keep the culture alive?</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">Yes.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">That's great! It means that even after many generations, people can still remember where their ancestors came from.</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">Exactly!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">And I thought history was only about dates and names!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">It is also about people, culture and stories.</div></div>
+  </div>
+</section>
+
+<!-- SCENE 6 -->
+<section class="rev skit" id="sc6" data-t="Scene 6 — Identity and Heritage" data-part="2">
+  <svg class="doodle dfloat2" style="width:130px;height:130px;top:14%;right:5%;--a:var(--gold)"><use href="#d-hands"/></svg>
+  <div class="skit-tag">🎭 Scene 6 of 7</div>
+  <div class="shead"><span class="scene-tag">Scene 6</span><h2>Identity and Heritage</h2></div>
+  <div class="script">
+    <div class="dir">(Community Leader enters.)</div>
+    <div class="ln"><div class="nm c-leader">Community Leader</div><div class="tx">Our African ancestry is part of our identity. Our Indian experiences are part of our journey. And our culture connects both.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So basically — African roots + Indian home = Siddi story!</div></div>
+    <div class="ln"><div class="nm c-leader">Community Leader</div><div class="tx">Exactly!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Wow! That's easier to remember than my Wi-Fi password!</div></div>
+    <div class="ln"><div class="nm c-leader">Community Leader</div><div class="tx">But there is one important thing. We must never forget our heritage. We must protect our music… Our dance… Our traditions… And our stories.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Because our traditions tell us where we came from and who we are.</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">Because when we forget our culture…</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">We forget an important part of ourselves.</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">India's history is like a big canvas, and each community is like a different colour that adds to it.</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">So India is like… Different colours… Different cultures… But together, they make something cool.</div></div>
+    <div class="ln"><div class="nm c-leader">Community Leader</div><div class="tx">Exactly!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">I think I'm finally understanding this! And nobody even had to give me homework!</div></div>
+  </div>
+</section>
+
+<!-- SCENE 7 -->
+<section class="rev skit" id="sc7" data-t="Scene 7 — Finale" data-part="2">
+  <svg class="doodle spin" style="width:130px;height:130px;top:12%;right:5%;--a:var(--gold)"><use href="#d-sun"/></svg>
+  <svg class="doodle dfloat" style="width:120px;height:120px;bottom:12%;left:4%;--a:var(--rose)"><use href="#d-star"/></svg>
+  <div class="skit-tag">🎭 Scene 7 of 7 · Finale</div>
+  <div class="shead"><span class="scene-tag">Scene 7</span><h2>Finale</h2></div>
+  <div class="script">
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">The story of the Siddis is more than a story of migration. It is a story of courage… Culture… History… And belonging.</div></div>
+    <div class="ln"><div class="nm c-soldier">Siddi Soldier</div><div class="tx">We travelled across the ocean!</div></div>
+    <div class="ln"><div class="nm c-dancer">Siddi Dancer</div><div class="tx">We carried our culture with us!</div></div>
+    <div class="ln"><div class="nm c-historian">Historian</div><div class="tx">We became part of Indian history!</div></div>
+    <div class="ln"><div class="nm c-leader">Community Leader</div><div class="tx">We continue to protect our heritage!</div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">And India became richer because of our diversity!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">And I learned something important today… People may come from different places… They may have different traditions… Different languages… Different cultures… But they can all become part of one big Indian culture!</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">And that's what makes India special!</div></div>
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">Different backgrounds… Different traditions… Different stories… But one awesome country!</div></div>
+    <div class="dir">(Student raises his hand.)</div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">Excuse me! I have one very important historical question.</div></div>
+    <div class="ln"><div class="nm c-narrator">Narrator</div><div class="tx">What is it?</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx">After all this travelling… All this history… All this dancing… And all this learning…</div></div>
+    <div class="ln"><div class="nm c-student">Student</div><div class="tx"><b>CAN WE FINALLY GET THOSE SNACKS?</b></div></div>
+    <div class="ln"><div class="nm c-villager">Indian Villager</div><div class="tx">FINALLY! Someone asked the important question!</div></div>
+  </div>
+</section>
+
+<!-- ══════════ CONCLUSION ══════════ -->
+<section class="rev" id="end" data-t="Two Roots, One Home" data-part="2" style="--a:var(--gold)">
+  <svg class="doodle dfloat" style="width:140px;height:140px;top:10%;left:4%;--a:var(--teal)"><use href="#d-baobab"/></svg>
+  <svg class="doodle dfloat2" style="width:140px;height:140px;top:12%;right:4%;--a:var(--coral)"><use href="#d-lotus"/></svg>
+  <div class="kicker">Conclusion</div>
+  <h2 style="font-size:clamp(30px,4.6vw,54px)">Two Roots, One Home</h2>
+  <div class="rule"></div>
+  <div class="roots">
+    <div class="root"><h3>🌍 African Roots</h3><p class="lede" style="font-size:15px">Ancestry, rhythm and memory — carried across the Indian Ocean and never let go of.</p></div>
+    <div class="root b"><h3>🇮🇳 Indian Home</h3><p class="lede" style="font-size:15px">Centuries of soldiering, building, worship and belonging in Gujarat, Karnataka, Maharashtra and Goa.</p></div>
+  </div>
+  <div class="eq">African roots <b>+</b> Indian home <b>=</b> the Siddi story</div>
+  <p class="lede" style="max-width:74ch">The story of the Siddis shows the long historical connection between Africa and India, and highlights migration, cultural exchange, leadership and resilience.</p>
+  <p class="lede" style="max-width:74ch;margin-top:16px">The Siddi community continues to face severe economic marginalisation and social isolation. Expanding structural support and safeguarding their Scheduled Tribe status are essential steps to secure their education, land rights and equitable future in India.</p>
+  <p style="margin-top:34px;font-size:13px;color:var(--dim)">Press <kbd>Space</kbd> for the thank-you screen.</p>
+</section>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 100 100"><use href="#d-dhow"/></svg>
+  <div>Thank you for watching. 🥁</div>
+  <div style="margin-top:8px;opacity:.6">The Siddis · African Roots in India</div>
+</footer>
+
+<button id="tt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+(function(){
+  const secs=[...document.querySelectorAll('section[data-t]')];
+
+  /* contents menu */
+  const g=p=>secs.filter(s=>s.dataset.part===p).map((s,n)=>
+    `<a href="#${s.id}" onclick="menu(0)"><i>${String(n+1).padStart(2,'0')}</i>${s.dataset.t}</a>`).join('');
+  document.getElementById('m1').innerHTML=g('1');
+  document.getElementById('m2').innerHTML=g('2');
+  window.menu=o=>document.getElementById('menu').classList.toggle('open',!!o);
+  window.jump=id=>{document.getElementById(id).scrollIntoView({behavior:'smooth'});menu(0);};
+
+  /* scroll progress + back-to-top */
+  const pf=document.getElementById('progf'),tt=document.getElementById('tt');
+  let tick=false;
+  addEventListener('scroll',()=>{
+    if(tick)return; tick=true;
+    requestAnimationFrame(()=>{
+      const h=document.documentElement.scrollHeight-innerHeight;
+      pf.style.width=(h>0?scrollY/h*100:0)+'%';
+      tt.classList.toggle('show',scrollY>700);
+      tick=false;
+    });
+  },{passive:true});
+
+  /* reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }),{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+
+  /* ═══════════════ PERSISTENCE + LIVE SYNC ═══════════════ */
+  const KEY='siddis.v2', RKEY='siddis.room';
+  const API='https://jsonblob.com/api/jsonBlob';
+
+  /* stable key for every editable box: section id + position */
+  const fields=[],byKey={};
+  secs.forEach(sec=>{
+    sec.querySelectorAll('.ph-body,.who,.btsx').forEach((el,n)=>{
+      el.dataset.k=sec.id+'.'+n; fields.push(el); byKey[el.dataset.k]=el;
+    });
+  });
+
+  /* state = { key: {v:text, t:timestamp} } — per-field stamps let two
+     people edit different sections at once without overwriting each other */
+  let state={};
+
+  const readDOM=()=>{
+    let changed=false;
+    fields.forEach(el=>{
+      const v=el.textContent.trim(), cur=state[el.dataset.k];
+      if((cur?cur.v:'')!==v){state[el.dataset.k]={v,t:Date.now()};changed=true;}
+    });
+    return changed;
+  };
+  const writeDOM=()=>{
+    let n=0;
+    fields.forEach(el=>{
+      const s=state[el.dataset.k];
+      if(!s)return;
+      if(el!==document.activeElement&&el.textContent.trim()!==s.v){el.textContent=s.v;} // textContent = no HTML injection
+      if(s.v)n++;
+    });
+    return n;
+  };
+  /* newest stamp per field wins */
+  const merge=inc=>{
+    let changed=false;
+    for(const k in inc){
+      const a=state[k],b=inc[k];
+      if(!b||typeof b.v!=='string')continue;
+      if(!a||b.t>a.t){state[k]=b;changed=true;}
+    }
+    return changed;
+  };
+  const plain=()=>{const o={};for(const k in state)if(state[k].v)o[k]=state[k].v;return o;};
+  const fromPlain=o=>{const s={},t=Date.now();for(const k in o)if(typeof o[k]==='string')s[k]={v:o[k],t};return s;};
+
+  /* ── base64url ── */
+  const b64=b=>btoa(String.fromCharCode(...b)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const ub64=s=>{
+    s=s.replace(/-/g,'+').replace(/_/g,'/');
+    const bin=atob(s+'='.repeat((4-s.length%4)%4));
+    return Uint8Array.from(bin,c=>c.charCodeAt(0));
+  };
+  /* gzip when the browser supports it, plain otherwise */
+  async function pack(o){
+    const bytes=new TextEncoder().encode(JSON.stringify(o));
+    if(self.CompressionStream){
+      const cs=new CompressionStream('gzip'),w=cs.writable.getWriter();
+      w.write(bytes);w.close();
+      return 'z'+b64(new Uint8Array(await new Response(cs.readable).arrayBuffer()));
+    }
+    return 'p'+b64(bytes);
+  }
+  async function unpack(s){
+    const flag=s[0],bytes=ub64(s.slice(1));
+    if(flag==='z'){
+      const ds=new DecompressionStream('gzip'),w=ds.writable.getWriter();
+      w.write(bytes);w.close();
+      return JSON.parse(new TextDecoder().decode(await new Response(ds.readable).arrayBuffer()));
+    }
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }
+
+  /* ── toast + status pill ── */
+  const tst=document.getElementById('toast');
+  const say=m=>{tst.textContent=m;tst.classList.add('show');clearTimeout(say._);say._=setTimeout(()=>tst.classList.remove('show'),2800);};
+  const pill=document.getElementById('saved');
+  let pt;
+  const flash=(txt,cls)=>{
+    pill.textContent=txt;pill.className='show '+(cls||'');
+    clearTimeout(pt);pt=setTimeout(()=>pill.classList.remove('show'),2000);
+  };
+
+  /* ── local storage ── */
+  const saveLocal=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}};
+  const loadLocal=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){return null}};
+
+  /* ═══ live sync (jsonblob.com — no account needed) ═══ */
+  let room=null, poll=null, pushing=false, dirty=false, lastErr=0;
+
+  const badge=document.getElementById('syncbadge');
+  const btn=document.getElementById('syncbtn');
+  const desc=document.getElementById('syncdesc');
+
+  function syncUI(){
+    if(room){
+      badge.textContent='on';badge.className='on';
+      btn.textContent='Copy shared link';btn.onclick=copyRoom;
+      desc.innerHTML='Live. Everyone with this link edits the same copy, and changes appear within about 8 seconds. <br><b style="color:var(--gold)">Send the shared link to your friends.</b>';
+      document.getElementById('syncrow').classList.add('live');
+    }else{
+      badge.textContent='off';badge.className='';
+      btn.textContent='Turn on';btn.onclick=startSync;
+    }
+  }
+
+  async function pull(){
+    if(!room||pushing)return;
+    try{
+      const r=await fetch(API+'/'+room,{headers:{'Accept':'application/json'},cache:'no-store'});
+      if(!r.ok)throw 0;
+      const d=await r.json();
+      if(d&&d.f&&merge(d.f)){writeDOM();saveLocal();flash('Updated ✓','ok');}
+      lastErr=0;
+    }catch(e){
+      if(!lastErr){lastErr=1;flash('Offline','warn');}
+    }
+  }
+
+  async function push(){
+    if(!room)return;
+    pushing=true;
+    try{
+      const r=await fetch(API+'/'+room,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({f:state,at:Date.now()})
+      });
+      if(!r.ok)throw 0;
+      dirty=false;flash('Synced ✓','ok');lastErr=0;
+    }catch(e){
+      dirty=true;flash('Saved here only','warn');
+    }
+    pushing=false;
+  }
+
+  function begin(id){
+    room=id;
+    try{localStorage.setItem(RKEY,id);}catch(e){}
+    if(!location.hash.includes('r='))history.replaceState(null,'','#r='+id);
+    clearInterval(poll);poll=setInterval(pull,8000);
+    syncUI();
+  }
+
+  window.startSync=async()=>{
+    btn.disabled=true;btn.textContent='Creating…';
+    readDOM();
+    try{
+      const r=await fetch(API,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({f:state,at:Date.now()})
+      });
+      const loc=r.headers.get('Location')||'';
+      const id=loc.split('/').pop();
+      if(!r.ok||!id)throw 0;
+      begin(id);
+      say('Shared copy created — now copy the link and send it around');
+      copyRoom();
+    }catch(e){
+      say('Could not reach the sync service. Your work is still safe on this device — use the backup file instead.');
+      flash('Offline','warn');
+    }
+    btn.disabled=false;syncUI();
+  };
+
+  async function copyRoom(){
+    const url=location.origin+location.pathname+'#r='+room;
+    const out=document.getElementById('linkout');
+    out.innerHTML='<textarea readonly></textarea><p>Anyone who opens this link edits the same shared copy. Bookmark it on every device you use.</p>';
+    out.querySelector('textarea').value=url;
+    try{await navigator.clipboard.writeText(url);say('Shared link copied');}
+    catch(e){out.querySelector('textarea').select();say('Press Ctrl+C / ⌘C to copy');}
+  }
+
+  /* ── typing: save locally now, push to the shared copy shortly after ── */
+  let td,tp;
+  document.addEventListener('input',e=>{
+    if(!e.target.dataset||!e.target.dataset.k)return;
+    clearTimeout(td);
+    td=setTimeout(()=>{
+      if(readDOM()){saveLocal();flash('Saved ✓','ok');dirty=true;
+        if(room){clearTimeout(tp);tp=setTimeout(push,900);}}
+    },400);
+  });
+  addEventListener('beforeunload',()=>{
+    if(readDOM())saveLocal();
+    if(room&&dirty&&navigator.sendBeacon)
+      navigator.sendBeacon(API+'/'+room,new Blob([JSON.stringify({f:state,at:Date.now()})],{type:'application/json'}));
+  });
+  /* catch up as soon as the tab is looked at again */
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&room)pull();});
+
+  /* ═══ boot: shared room → snapshot link → this device's copy ═══ */
+  (async()=>{
+    const local=loadLocal();
+    if(local)state=local;
+
+    const rm=location.hash.match(/[#&]r=([A-Za-z0-9]+)/);
+    const dm=location.hash.match(/[#&]d=([A-Za-z0-9\-_]+)/);
+
+    if(dm){
+      try{merge(fromPlain(await unpack(dm[1])));}
+      catch(e){say('That snapshot link could not be read');}
+    }
+    writeDOM();
+
+    if(rm){
+      begin(rm[1]);
+      await pull();writeDOM();
+      const n=Object.values(state).filter(s=>s.v).length;
+      say(n?'Shared copy loaded — '+n+' box'+(n>1?'es':'')+' filled in':'Shared copy connected — nothing written yet');
+    }else{
+      const saved=(()=>{try{return localStorage.getItem(RKEY)}catch(e){return null}})();
+      if(saved){begin(saved);await pull();writeDOM();}
+      else syncUI();
+    }
+    saveLocal();
+  })();
+
+  /* ── snapshot link / backup file / reset ── */
+  window.share=o=>document.getElementById('sheet').classList.toggle('open',!!o);
+
+  window.mkLink=async()=>{
+    readDOM();
+    const data=plain();
+    if(!Object.keys(data).length){say('Nothing written yet — type something first');return;}
+    const url=location.origin+location.pathname+'#d='+await pack(data);
+    const out=document.getElementById('linkout');
+    out.innerHTML='<textarea readonly></textarea><p></p>';
+    out.querySelector('textarea').value=url;
+    out.querySelector('p').textContent=url.length>16000
+      ? '⚠ Very long link ('+url.length.toLocaleString()+' characters); some chat apps will cut it. Use the backup file instead.'
+      : 'Snapshot ready ('+url.length.toLocaleString()+' characters) — a frozen copy of the text as it is right now.';
+    try{await navigator.clipboard.writeText(url);say('Snapshot link copied');}
+    catch(e){out.querySelector('textarea').select();say('Press Ctrl+C / ⌘C to copy');}
+  };
+
+  window.dl=()=>{
+    readDOM();
+    const blob=new Blob([JSON.stringify(plain(),null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='siddis-writing-'+new Date().toISOString().slice(0,10)+'.json';
+    a.click();URL.revokeObjectURL(a.href);say('Backup downloaded');
+  };
+
+  window.ld=inp=>{
+    const f=inp.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{
+      try{
+        merge(fromPlain(JSON.parse(r.result)));
+        const n=writeDOM();saveLocal();if(room)push();
+        say('Restored '+n+' box'+(n>1?'es':''));share(0);
+      }catch(e){say('That file could not be read')}
+    };
+    r.readAsText(f);inp.value='';
+  };
+
+  window.wipe=()=>{
+    if(!confirm(room
+      ? 'Clear everything — including the shared copy your friends can see? This cannot be undone.'
+      : 'Clear everything written on this device? This cannot be undone.'))return;
+    state={};const t=Date.now();
+    fields.forEach(el=>{el.textContent='';state[el.dataset.k]={v:'',t};});
+    saveLocal();if(room)push();
+    say('All boxes cleared');share(0);
+  };
+
+  /* edit mode */
+  let editing=false;
+  window.edit=()=>{
+    editing=!editing;
+    const b=document.getElementById('ed');
+    b.classList.toggle('on',editing);
+    b.textContent=editing?'✓ Editing':'✎ Edit';
+    fields.forEach(el=>el.contentEditable=editing);
+    if(editing)say(room?'Edit mode on — your changes reach everyone on the shared link':'Edit mode on — click any dotted box and type');
+    else{if(readDOM()){saveLocal();if(room)push();}}
+  };
+  /* ═══════════════ THANK-YOU SCREEN ═══════════════ */
+  const VIDEO='CfihYWRWRTQ';   // John Newman — Love Me Again (official)
+  /* ─── TIMING · change these three numbers to retime the ending ───
+     ROLL  = how long the credits take to roll, in seconds
+     CHORUS= where in the song to start, in seconds (52 = the first chorus)
+     FADE  = how many seconds of fade-out at the very end             */
+  const ROLL=45, CHORUS=52, FADE=4;
+  const tk=document.getElementById('thanks'), pl=document.getElementById('player');
+  const mp3=document.getElementById('mp3'), pb=document.getElementById('playbtn'),
+        yt=document.getElementById('ytbtn'), note=document.getElementById('tnote'),
+        rollin=document.getElementById('rollin');
+
+  /* credits are built from the live page, so whatever gets typed into the
+     cast and crew cards shows up here automatically */
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function buildRoll(){
+    const cast=[...document.querySelectorAll('#cast .ccard')].map(c=>({
+      role:c.querySelector('b').textContent.trim(),
+      who:c.querySelector('small').textContent.trim()
+    })).filter(r=>r.who);
+    const crew=[...document.querySelectorAll('#bts .cw')].map(c=>({
+      who:c.querySelector('.nm2').textContent.trim(),
+      role:(c.querySelector('b').textContent.trim()||'Crew')
+    }));
+
+    let h='<div class="cr-title">THE SIDDIS<br>African Roots in India</div>'+
+          '<div class="cr-sub">A Class Presentation &amp; Skit</div>';
+
+    if(cast.length){
+      h+='<div class="cr-h">Cast</div>';
+      cast.forEach(r=>h+='<div class="cr-row"><span class="r">'+esc(r.role)+'</span><span class="p">'+esc(r.who)+'</span></div>');
+    }
+
+    h+='<div class="cr-h">Crew</div>';
+    crew.forEach(r=>h+='<div class="cr-row"><span class="r">'+esc(r.role)+'</span><span class="p">'+esc(r.who)+'</span></div>');
+
+    h+='<div class="cr-h">Music</div>'+
+       '<div class="cr-one">“Love Me Again”</div>'+
+       '<div class="cr-note">Written and performed by John Newman<br>Used for classroom presentation only</div>'+
+       '<div class="cr-h">Sources</div>'+
+       '<div class="cr-note">Class research on the Siddi community<br>of Gujarat, Karnataka, Maharashtra and Goa</div>'+
+       '<div class="cr-end">THANK YOU</div>';
+
+    rollin.innerHTML=h;
+    rollin.style.setProperty('--roll',ROLL+'s');
+  }
+
+  window.replayRoll=()=>{
+    buildRoll();
+    rollin.style.animation='none';void rollin.offsetHeight;   // restart the animation
+    rollin.style.animation='';
+  };
+
+  /* YouTube fallback — used when there's no song.mp3 sitting next to index.html */
+  window.playYT=()=>{
+    pl.innerHTML='<iframe allow="autoplay; encrypted-media" allowfullscreen '+
+      'src="https://www.youtube.com/embed/'+VIDEO+'?start='+CHORUS+'&autoplay=1&rel=0"></iframe>';
+    pb.textContent='♪ Playing';yt.style.display='none';
+    note.textContent='“Love Me Again” — John Newman, via YouTube’s player.';
+  };
+
+  /* prefer your own audio file: instant, works offline, no network needed */
+  let fadeT;
+  window.playSong=async()=>{
+    try{
+      mp3.currentTime=CHORUS;
+      mp3.volume=1;
+      await mp3.play();
+      pb.textContent='♪ Playing';yt.style.display='';
+      note.textContent='Playing song.mp3 · fades out as the credits finish.';
+      startFade();
+    }catch(e){ playYT(); }
+  };
+
+  /* ease the volume down over the last FADE seconds of the roll */
+  function startFade(){
+    clearInterval(fadeT);
+    const t0=performance.now(), begin=(ROLL-FADE)*1000, span=FADE*1000;
+    fadeT=setInterval(()=>{
+      const el=performance.now()-t0;
+      if(el<begin)return;
+      const v=Math.max(0,1-(el-begin)/span);
+      try{mp3.volume=v;}catch(e){}
+      if(v<=0){clearInterval(fadeT);try{mp3.pause();}catch(e){}}
+    },80);
+  }
+
+  window.thanks=o=>{
+    tk.classList.toggle('open',!!o);
+    document.body.style.overflow=o?'hidden':'';
+    if(o){replayRoll();setTimeout(playSong,450);}    // spacebar counts as the user gesture
+    else{
+      pl.innerHTML='';rollin.innerHTML='';
+      clearInterval(fadeT);
+      try{mp3.pause();mp3.currentTime=0;mp3.volume=1;}catch(e){}
+      pb.textContent='▶ Play the song';yt.style.display='none';
+      note.textContent='“Love Me Again” — John Newman.';
+    }
+  };
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){menu(0);share(0);thanks(0);return;}
+    if(e.target.isContentEditable)return;            // never hijack space while typing
+    if(e.code==='Space'||e.key===' '){
+      e.preventDefault();
+      thanks(!tk.classList.contains('open'));
+    }
+  });
+})();
+</script>
+</body>
+</html>
